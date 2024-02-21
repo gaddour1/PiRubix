@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="contact-area style-two">
+        <div class="section-title">
+            <h3>ajouter<span>evenements</span></h3>
+        </div>
+
+        {{ form_start(e,{attr:{novalidate:'novalidate'}}) }}
+       
+            <div class="row">
+                <div class="form-group">
+                    <label for="inputText" class="col-sm-4 col-form-label">Titre</label>
+                    {{ form_widget(e.titre, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                {{ form_errors(e.titre,{'attr':{'class':'text-danger'}}) }}
+
+                <div class="form-group">
+                    <label for="inputText" class="col-sm-4 col-form-label">Description</label>
+                    {{ form_widget(e.description, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                {{ form_errors(e.description,{'attr':{'class':'text-danger'}}) }}
+
+                <div class="form-group">
+                    <label for="inputText" class="col-sm-4 col-form-label">Lieu</label>
+                    {{ form_widget(e.lieu, {'attr': {'class': 'form-control'}}) }}
+                </div>
+                {{ form_errors(e.lieu,{'attr':{'class':'text-danger'}}) }}
+
+                <div class="form-group">
+                    <label for="inputText" class="col-sm-4 col-form-label">Date</label>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    {{ form_widget(e.date, {'attr': {'class': 'form-control'}}) }}ù
+                    <br><br> <br><br> <br><br> <br><br>
+        
+
+                </div>
+                {{ form_errors(e.date,{'attr':{'class':'text-danger'}}) }}
+
+
+                <div class="form-group">
+                    <label for="inputFile" class="col-sm-4 col-form-label">Image</label>
+                    {{ form_widget(e.image, {'attr': {'class': 'form-control-file'}}) }}
+                </div>
+             
+                <br><br> <br>
+
+                <div class="form-group text-center">
+                    {{ form_widget(e.ajouter, {'attr': {'class': 'form-control'}}) }}
+                </div>         
+            </div>
+      
+        {{ form_end(e) }}
+    </div>
+{% endblock %}

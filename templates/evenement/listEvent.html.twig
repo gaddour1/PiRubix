@@ -1,0 +1,81 @@
+{% extends 'Front/front.html.twig' %}
+
+{% block body %}
+
+<section class="post">
+    <header class="major">
+        <span class="date">La Liste Des Evenements</span>
+    </header>
+    <div id="wrap">
+        <!-- Your navigation links here -->
+    </div>
+    
+    <div class="section-content">
+        <form>
+            <input id="impression" class="js-programmatic-set-val btn btn-outline-primary mr-1 mb-1s" name="impression" type="button" onclick="imprimer_page()" value="Print this page">
+        </form>
+
+        <article class="post featured">
+            <header class="major"> 
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Image</th>
+                            <th>Titre</th>
+                            <th>description</th>
+                            <th>Lieu</th>
+                            <th>Date</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in event %}
+                        <tr>
+                            <td>{{ item.id }}</td>
+                            <td>
+                                {% if event|length > 0 %}
+                                    <img src="{{ asset('uploads/' ~ item.image) }}" width="150" height="100">
+                                {% else %}
+                                    <img src="{{ asset('uploads/Not found.jpg') }}" width="150" height="100">
+                                {% endif %}
+                            </td>
+                            <td>{{ item.titre }}</td>
+                            <td>{{ item.description }}</td>
+                            <td>{{ item.lieu }}</td>
+                            <td>{{ item.date ? item.date|date('Y-m-d') : '' }}</td>
+                            <td>
+                                <a href="{{ path('participate', {'eventId': item.id}) }}" class="btn btn-primary">
+                                    <i class="fas fa-check-circle"></i> Participer
+                                </a>
+                                
+                            </td>
+                        </tr>
+                      
+                        {% else %}
+                        <tr>
+                            <td colspan="7">No records found</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </header>
+
+            <div class="col-md-12">
+                <fieldset>
+                    <a href="{{ path('app_home') }}">back to home</a>
+                </fieldset>
+            </div>
+         
+        </article>
+        <div class="align-center">     
+            <nav>
+                <ul class="pagination">
+                    <!-- Your pagination links here -->
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

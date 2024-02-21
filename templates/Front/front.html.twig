@@ -1,0 +1,188 @@
+<!-- pour le logine seulement-->
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title> {% block title %} Tbibek {% endblock %} </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<!-- plugins:css -->
+		<link rel="shortcut icon" type="image/x-icon" href="{{ asset('Front/images/img.ico')}}">
+        {% block stylesheets %}
+		<link rel="stylesheet" href="{{ asset('Front/assets/css/main.css') }}" />
+		<noscript><link rel="stylesheet" href="{{ asset('Front/assets/css/noscript.css') }}" /></noscript>
+
+        {% endblock %}
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="fade-in">
+
+				<!-- Intro -->
+					<div id="intro">
+						<div class="logo"><img src="{{ asset('img/img.png') }}" width="150" height="150" /></div>
+						<h1>Tbibek</h1>
+						<p>stay safe ,
+							stay home
+						</p>
+						<ul class="actions">
+							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+						</ul>
+					</div>
+
+				<!-- Header -->
+					<header id="header">
+					
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						{% if not app.user %}
+						<ul class="links">
+							
+							
+						</ul>
+						{% else %}
+						<ul class="links">
+							<li class="active"><a href="{{ path('home') }}">Actuelle</a></li>
+							<li><a href="{{ path('voyage_index') }}">rendez-vous</a></li>
+							<li><a href="{{ path('excursion_index') }}"> medicaments</a></li>
+							<li><a href="{{ path('restaurant_index') }}"> visite a domicile</a></li>
+							<li><a href="{{ path('post_new') }}">Acceuil</a></li>
+						</ul>
+						{% endif %}
+						<ul class="icons">
+							{% if not app.user %}
+							
+							{% else %}
+							
+							{% endif %}
+							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+							<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+							<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+							<li><a href="https://github.com/AzizBenIsmail/PIDEV-3A29-dynamic-developers" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						</ul>
+					</nav>
+				<!-- Main -->
+                  {% block body %}
+					<div id="main">
+
+						<!-- Featured Post -->
+						<article class="post featured">
+							<header class="major">
+								<span class="date">{{ app.user.UserName }}</span>
+							</header>
+							<a href="#" class="image main"> {% if app.user.image|length > 0 %}
+									<td><img src="{{ asset('uploads/'~ app.user.image ) }}" width="500" height="350"></td>
+								{% else %}
+									<td><img src="{{ asset('uploads/'~ "Not found.jpg" ) }}" width="250" height="150"></td>
+								{% endif %}</a>
+						</article>
+
+						
+							</header>
+							
+						</article>
+
+						
+							</header>
+							
+						</article>
+
+						<article class="post featured">
+							<header class="major">
+								<span class="date">La Liste Des evenements </span>
+								<table class="table">
+									<thead>
+									<tr>
+										<td>ID</td>
+										<td>titre</td>
+										<td>description</td>
+										<td>date</td>
+										<td>lieu</td>
+										<th>image</th>
+										<th>suppression</th>
+										<th>edition</th>
+									</tr>
+									</thead>
+									
+								</table>
+							</header>
+							
+						</article>
+						<!-- Footer -->
+
+					</div>
+                       {% endblock %}
+				<!-- Footer -->
+					<footer id="footer">
+						<section>
+							<form method="post" action="#">
+								<div class="fields">
+									<div class="field">
+										<label for="name">Name</label>
+										<input type="text" name="name" id="name" />
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input type="text" name="email" id="email" />
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="3"></textarea>
+									</div>
+								</div>
+								<ul class="actions">
+									<li><input type="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</section>
+						<section class="split contact">
+							<section class="alt">
+								<h3>Address</h3>
+								<p>1234 Somewhere Road #87257<br />
+								Nashville, TN 00000-0000</p>
+							</section>
+							<section>
+								<h3>Phone</h3>
+								<p><a href="#">(000) 000-0000</a></p>
+							</section>
+							<section>
+								<h3>Email</h3>
+								<p><a href="#">info@untitled.tld</a></p>
+							</section>
+							<section>
+								<h3>Social</h3>
+								<ul class="icons alt">
+									<li><a href="#" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands alt fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands alt fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
+							</section>
+						</section>
+					</footer>
+
+				<!-- Copyright -->
+					<div id="copyright">
+						<ul><li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+					</div>
+
+			</div>
+
+
+            {% block js %}
+		<!-- Scripts -->
+			<script src="{{ asset('Front/assets/js/jquery.min.js') }}"></script>
+			<script src="{{ asset('Front/assets/js/jquery.scrollex.min.js') }}"></script>
+			<script src="{{ asset('Front/assets/js/jquery.scrolly.min.js') }}"></script>
+			<script src="{{ asset('Front/assets/js/browser.min.js') }}"></script>
+			<script src="{{ asset('Front/assets/js/breakpoints.min.js') }}"></script>
+			<script src="{{ asset('Front/assets/js/util.js') }}"></script>
+			<script src="{{ asset('Front/assets/js/main.js') }}"></script>
+            {% endblock %}
+
+
+
+	</body>
+</html>

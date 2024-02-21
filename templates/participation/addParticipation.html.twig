@@ -1,0 +1,49 @@
+{% extends 'Front/front.html.twig' %}
+
+{% block title %}New ReservationVoyage{% endblock %}
+
+{% block body %}
+
+    <div id="main">
+        <!-- Post -->
+        <section class="post">
+            <header class="major">
+                <span class="date">Participation</span>
+            </header>
+
+            <div class="section-content">
+                {{ form_start(fo, {'attr': {'class':'form-horizontal','novalidate':'novalidate'}} ) }}
+                <div class="col-md-12">
+                    <fieldset>
+                        <label for="inputText" class="col-sm-4 col-form-label">User Id</label>
+                        {{ form_widget(fo.idUser, {'attr': {'class': 'form-control'}}) }}
+                    </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                    <fieldset>
+                        <label for="inputText" class="col-sm-4 col-form-label">Name</label>
+                        {{ form_widget(fo.nameUser, {'attr': {'class': 'form-control'}}) }}
+                    </fieldset>
+                </div>
+
+                <div class="col-md-12">
+                    <fieldset>
+
+                        {{ form_widget(fo.participer, {'attr': {'class': 'form-control'}}) }}
+
+                    </fieldset>
+                </div>
+                <div class="col-md-12">
+                    <fieldset>
+                        <a href="{{ path('eventfront') }}">back to list</a>
+                    </fieldset>
+                </div>
+
+                {{ form_end(fo) }}
+
+            </div>
+        </section>
+    </div>
+    
+{% endblock %}
